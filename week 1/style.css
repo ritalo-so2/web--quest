@@ -1,0 +1,30 @@
+element.style {
+    display: none;
+}
+*{
+    box-sizing: border-box;
+}
+body.theme-neon {
+    font-family: "Noto Sans TC", sans-serif;
+    color: #e9e4ff;
+    background: rgba(20, 14, 40, .75);
+    border: 2px solid #ff4fd8;
+    border-radius: 24px;
+    box-shadow: 0 0 24px rgba(255, 79, 216, .55), inset 0 0 24px rgba(68, 230, 255, .15);
+}
+body {
+    max-width: 640px;
+    margin: 48px auto;
+    padding: 44px 40px;
+    line-height: 1.85;
+    font-size: 17px;
+    text-align: center;
+}
+@font-face {
+    font-family: 'Noto Sans TC';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/notosanstc/v40/-nF7OG829Oofr2wohFbTp9iFOkMQAewlpbGXhhyYs0QF3kPVyLylzU95vTq1Ltj5xQez1g.0.woff2) format('woff2');
+    unicode-range: U +3401, U +3441, U +34fe, U +3502, U +3578, U +3585, U +35b8, U +35d8, U +35f1, U +3614, U +361b, U +361d, U +372e, U +3737, U +3757, U +3769, U +3909, U +3915, U +39c1, U +39cc, U +39ce, U +39d2, U +39e1, U +39e3, U +39fb, U +39fe, U +3a11, U +3a28, U +3a2a, U +3a3b, U +3a46, U +3a90, U +3b39, U +3c35, U +3d18 -3d19, U +3dee, U +3e10, U +3e30, U +3f13, U +3f4e, U +3f80, U +3f8a, U +3ff8, U +4010, U +402f, U +4034, U +406f, U +40d7, U +4180, U +41f6, U +4204, U +4242, U +4308, U +4599, U +45b3, U +45c1, U +45c6, U +45d0, U +4606, U +4625, U +463c, U +479a, U +47d3, U +47d8, U +47e9, U +4821, U +488d, U +48a2, U +4acc, U +4bcb, U +4c85, U +4f28, U +502f, U +50aa, U +50eb, U +5111, U +5133, U +5210, U +521c, U +527a, U +527e, U +52e5, U +52fc, U +5327, U +5467, U +54ef, U +54f1, U +54f9, U +5529, U +558c, U +5593, U +55a2, U +55a4, U +55cb, U +5610, U +5677, U +56be, U +571d, U +5749, U +5771, U +579e, U +5860, U +5945, U +5952, U +5a78, U +5c67, U +5eb0, U +60bf, U +61a2, U +6250, U +6274, U +6277, U +6290, U +62c1, U +6303, U +6314 -6315, U +6329, U +6331, U +6333, U +6354, U +6358 -6359, U +635d, U +637e, U +639c -639d, U +63c7, U +63cb -63cc, U +63d9, U +63e2, U +63eb;
+}
