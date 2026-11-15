@@ -267,7 +267,7 @@
         <section id="quiz-panel" aria-label="測驗題目">
             <div class="progress-wrap">
                 <div class="question-meta">
-                    <span id="question-count">第 1 題，共 3 題</span>
+                    <span id="question-count">正在載入題目…</span>
                     <span id="score-count">目前答對 0 題</span>
                 </div>
                 <div
@@ -276,7 +276,7 @@
                     role="progressbar"
                     aria-label="測驗進度"
                     aria-valuemin="0"
-                    aria-valuemax="3"
+                    aria-valuemax="0"
                     aria-valuenow="0"
                 >
                     <div class="progress-bar" id="progress-bar"></div>
@@ -307,27 +307,84 @@
         // 編輯這裡的題目、選項、正確答案索引與解析即可換成自己的題目。
         const questions = [
             {
-                question: "HTML 的主要用途是什麼？",
+                question: "在前端開發中，若要建立一個按鈕並設定其呈現的顏色外觀，這兩個需求分別屬於哪些技術的核心職責？",
                 choices: [
-                    "設定網頁的顏色與排版",
-                    "建立網頁的內容與結構",
-                    "讓網頁連接資料庫",
-                    "製作圖片與影片"
+                    "HTML 負責定義點擊觸發的動作，CSS 負責建立按鈕元素",
+                    "HTML 負責在頁面上建立按鈕元素，CSS 負責美化並設定按鈕的外觀顏色",
+                    "JavaScript 負責建立按鈕元素，HTML 負責調整按鈕的外觀顏色",
+                    "CSS 負責建立按鈕元素，JavaScript 負責設定按鈕的外觀顏色"
                 ],
                 answer: 1,
-                explanation: "HTML 負責描述網頁的內容與結構；顏色和排版通常交給 CSS 處理。"
+                explanation: "HTML 負責建立網頁內容與結構，CSS 負責外觀樣式，JavaScript 則負責互動行為。"
             },
             {
-                question: "在 HTML 中，哪一個標籤通常用來表示最主要的標題？",
-                choices: ["<p>", "<img>", "<h1>", "<footer>"],
+                question: "下列哪一種寫在 HTML 檔裡面的內容，會被瀏覽器讀取並呈現於網頁的可視畫面上？",
+                choices: [
+                    "寫在 <body> 標籤內的 <p> 段落文字",
+                    "寫在 <head> 標籤內部的 <title> 網頁標題設定",
+                    "寫在 <!-- 與 --> 註解符號之間的說明文字",
+                    '寫在 <head> 標籤內部的 <meta charset="UTF-8"> 設定'
+                ],
+                answer: 0,
+                explanation: "網頁瀏覽器僅會將寫在<body>標籤內的內容呈現於畫面上，其他寫在<head>裡的設定或註解文字不會顯示。"
+            },
+            {
+                question: "在圖片標籤中，哪個屬性能提供圖片的文字替代說明？",
+                choices: ["src", "href", "alt", "title"],
                 answer: 2,
-                explanation: "<h1> 表示頁面中最重要的一級標題，適合用來標示主要主題。"
+                explanation: "alt 屬性用來提供圖片的文字替代說明。"
             },
             {
-                question: "想改變網頁文字的顏色，最適合使用哪一種技術？",
-                choices: ["HTML", "CSS", "網址 URL", "檔案名稱"],
+                question: "在 VS Code 編輯器中，若希望透過內建的 Emmet 功能瞬間產生標準 HTML5 文件的完整骨架，應該輸入什麼符號並按下 Tab 鍵？",
+                choices: ["!", "@", "#", "html"],
+                answer: 0,
+                explanation: "在 VS Code 中輸入驚嘆號 ! 並按下 Tab 鍵，會觸發 Emmet 自動補全並產生 HTML5 文件骨架。"
+            },
+            {
+                question: "在編寫文章時，若想將句子中的某幾個字標記為需要特別強調的「重要資訊」，最符合語意化且適當的標籤是哪一個？",
+                choices: ["<strong>", "<em>", "<h1>", "<br>"],
+                answer: 0,
+                explanation: "<strong> 標籤用於表示句中或段落中具有高度重要性、需要強調的關鍵字句，通常會以粗體顯示。"
+            },
+            {
+                question: "符合 HTML 標籤巢狀（Nesting）結構「先開啟者後關閉」原則的程式碼片段為何？",
+                choices: ["<p>請閱讀<strong>注意事項</strong></p>", "<p>請閱讀<strong>注意事項</p></strong>", "<p>請閱讀注意事項</p></strong>", "<strong><p>請閱讀注意事項</strong></p>"],
+                answer: 0,
+                explanation: "HTML 標籤必須按照「先開啟者後關閉」的原則進行巢狀結構的撰寫。"
+            },
+            {
+                question: '在標籤 <a href="https://youtube.com" target="_blank"> 中，加入 target="_blank" 屬性會對使用者的點擊行為產生什麼影響？',
+                choices: ["在新分頁中開啟連結", "在原分頁中開啟連結", "下載連結指向的文件", "不產生任何影響"],
+                answer: 0,
+                explanation: 'target="_blank" 屬性會讓連結在新的瀏覽器分頁中開啟。'
+            },
+            {
+                question: "若開啟剛寫好的 HTML 檔案時發現網頁中的中文文字全都變成無法閱讀的亂碼，最可能是因為 HTML 文件中遺漏了哪一項設定？",
+                choices: [
+                    'target="_blank"',
+                    '<meta charset="UTF-8">',
+                    "<hr>",
+                    "<title>建立網頁標題</title>"
+                ],
                 answer: 1,
-                explanation: "CSS 負責網頁的外觀，例如文字顏色、字體、間距和版面配置。"
+                explanation: "指定UTF-8編碼格式，確保瀏覽器以正確的編碼表解析中文字元，能正確顯示，防止亂碼發生。"
+            },
+            {
+                question: "在 VS Code 中使用 Live Server 延伸模組開發網頁時，每當存檔（Ctrl+S）後會發生下列哪種情況？",
+                choices: ["網頁自動重新載入", "網頁關閉並重新開啟", "網頁顯示錯誤訊息", "網頁變更不會生效"],
+                answer: 0,
+                explanation: "使用 Live Server 時，存檔後網頁會自動重新載入，以顯示最新的更改。"
+            },
+            {
+                question: "關於 HTML 標題標籤 `<h1>` 至 `<h6>` 的使用原則與特性，下列哪個敘述是正確的？",
+                choices: [
+                    "h6代表的是全頁最高層級且字體最大的標題",
+                    "一個 HTML 檔案中僅能出現 h1 標籤，絕對不能使用 h2 以下的標籤",
+                    "標題的字體大小h6最大，h1最小，且標題的層級與字體大小無關",
+                    "h1到h6主要用來表示標題的結構層級與重要程度。"
+                ],
+                answer: 3,
+                explanation: "h1到h6標題標籤用來表示網頁中不同層級的標題，h1是最高層級，h6是最低層級。"
             }
         ];
 
