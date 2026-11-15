@@ -1,11 +1,443 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="theme-color" content="#071b20">
+    <title>Week 2｜網頁小測驗</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+            color: #eef8f7;
+            background: #071b20;
+            font-synthesis: none;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 32px 20px;
+            display: grid;
+            place-items: center;
+            background:
+                radial-gradient(ellipse at 15% 15%, rgba(12, 104, 93, 0.3), transparent 38%),
+                radial-gradient(ellipse at 90% 85%, rgba(17, 83, 106, 0.28), transparent 36%),
+                #071b20;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .quiz {
+            width: min(100%, 680px);
+            padding: clamp(24px, 6vw, 48px);
+            border: 1px solid rgba(98, 239, 213, 0.32);
+            border-radius: 28px;
+            background: rgba(11, 34, 39, 0.92);
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34), 0 0 36px rgba(5, 230, 197, 0.08);
+        }
+
+        .topline,
+        .question-meta,
+        .result-score {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .week-label {
+            color: #73ead6;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+
+        .pill {
+            padding: 7px 12px;
+            border: 1px solid rgba(115, 234, 214, 0.28);
+            border-radius: 999px;
+            color: #b7d8d5;
+            font-size: 0.8rem;
+        }
+
+        h1 {
+            margin: 24px 0 8px;
+            font-size: clamp(2rem, 7vw, 3rem);
+            letter-spacing: 0.02em;
+        }
+
+        .intro {
+            margin: 0;
+            color: #a9c1c0;
+            line-height: 1.8;
+        }
+
+        .progress-wrap {
+            margin: 30px 0 28px;
+        }
+
+        .progress-track {
+            height: 7px;
+            overflow: hidden;
+            border-radius: 999px;
+            background: #1b383b;
+        }
+
+        .progress-bar {
+            width: 0;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #05c9a9, #8af0dc);
+            transition: width 240ms ease;
+        }
+
+        .question-meta {
+            margin-bottom: 14px;
+            color: #83dccc;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .question {
+            margin: 0 0 24px;
+            font-size: clamp(1.2rem, 4vw, 1.55rem);
+            line-height: 1.65;
+        }
+
+        .choices {
+            display: grid;
+            gap: 12px;
+        }
+
+        .choice {
+            width: 100%;
+            padding: 15px 17px;
+            border: 1px solid #315054;
+            border-radius: 14px;
+            background: #102b30;
+            color: #e7f2f1;
+            text-align: left;
+            cursor: pointer;
+            transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+        }
+
+        .choice:not(:disabled):hover {
+            transform: translateY(-2px);
+            border-color: #67dfcb;
+            background: #15383b;
+        }
+
+        .choice:focus-visible,
+        .action:focus-visible {
+            outline: 3px solid #9af4e4;
+            outline-offset: 3px;
+        }
+
+        .choice:disabled {
+            cursor: default;
+        }
+
+        .choice.is-correct {
+            border-color: #4de0ae;
+            background: rgba(30, 119, 88, 0.32);
+        }
+
+        .choice.is-wrong {
+            border-color: #ff9a89;
+            background: rgba(140, 55, 53, 0.3);
+        }
+
+        .feedback {
+            min-height: 24px;
+            margin: 18px 0 0;
+            color: #bed4d2;
+            line-height: 1.7;
+        }
+
+        .feedback strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #80ecd5;
+        }
+
+        .feedback.is-wrong strong {
+            color: #ffad9e;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 22px;
+        }
+
+        .action {
+            min-height: 48px;
+            padding: 11px 20px;
+            border: 0;
+            border-radius: 12px;
+            background: #70ead4;
+            color: #06231f;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 160ms ease, background 160ms ease;
+        }
+
+        .action:hover {
+            transform: translateY(-2px);
+            background: #9af4e4;
+        }
+
+        .action:disabled {
+            background: #355451;
+            color: #91aaa7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .result {
+            padding: 16px 0 4px;
+            text-align: center;
+        }
+
+        .result-icon {
+            font-size: 3rem;
+        }
+
+        .result h2 {
+            margin: 12px 0 8px;
+            font-size: 1.8rem;
+        }
+
+        .result-score {
+            justify-content: center;
+            margin: 24px 0;
+            color: #b5cecb;
+        }
+
+        .result-score strong {
+            color: #81efd9;
+            font-size: 1.35rem;
+        }
+
+        .result .action {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 18px 12px;
+            }
+
+            .quiz {
+                border-radius: 22px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 <body>
-    
+    <main class="quiz">
+        <div class="topline">
+            <span class="week-label">WEEK 2 · INTERACTIVE</span>
+            <span class="pill">HTML 入門</span>
+        </div>
+        <h1>網頁小測驗</h1>
+        <p class="intro">選出你的答案，看看自己對網頁基礎了解多少！</p>
+
+        <section id="quiz-panel" aria-label="測驗題目">
+            <div class="progress-wrap">
+                <div class="question-meta">
+                    <span id="question-count">第 1 題，共 3 題</span>
+                    <span id="score-count">目前答對 0 題</span>
+                </div>
+                <div
+                    class="progress-track"
+                    id="progress-track"
+                    role="progressbar"
+                    aria-label="測驗進度"
+                    aria-valuemin="0"
+                    aria-valuemax="3"
+                    aria-valuenow="0"
+                >
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </div>
+
+            <h2 class="question" id="question-text" tabindex="-1"></h2>
+            <div class="choices" id="choices" aria-label="答案選項"></div>
+            <div class="feedback" id="feedback" aria-live="polite"></div>
+            <div class="actions">
+                <button class="action" id="next-button" type="button" disabled>查看解析</button>
+            </div>
+        </section>
+
+        <section class="result" id="result-panel" aria-live="polite" hidden>
+            <div class="result-icon" aria-hidden="true">🎉</div>
+            <h2 id="result-title">測驗完成！</h2>
+            <p class="intro" id="result-message"></p>
+            <div class="result-score">
+                <span>你的成績：</span>
+                <strong id="final-score"></strong>
+            </div>
+            <button class="action" id="restart-button" type="button">再玩一次</button>
+        </section>
+    </main>
+
+    <script>
+        // 編輯這裡的題目、選項、正確答案索引與解析即可換成自己的題目。
+        const questions = [
+            {
+                question: "HTML 的主要用途是什麼？",
+                choices: [
+                    "設定網頁的顏色與排版",
+                    "建立網頁的內容與結構",
+                    "讓網頁連接資料庫",
+                    "製作圖片與影片"
+                ],
+                answer: 1,
+                explanation: "HTML 負責描述網頁的內容與結構；顏色和排版通常交給 CSS 處理。"
+            },
+            {
+                question: "在 HTML 中，哪一個標籤通常用來表示最主要的標題？",
+                choices: ["<p>", "<img>", "<h1>", "<footer>"],
+                answer: 2,
+                explanation: "<h1> 表示頁面中最重要的一級標題，適合用來標示主要主題。"
+            },
+            {
+                question: "想改變網頁文字的顏色，最適合使用哪一種技術？",
+                choices: ["HTML", "CSS", "網址 URL", "檔案名稱"],
+                answer: 1,
+                explanation: "CSS 負責網頁的外觀，例如文字顏色、字體、間距和版面配置。"
+            }
+        ];
+
+        const quizPanel = document.querySelector("#quiz-panel");
+        const resultPanel = document.querySelector("#result-panel");
+        const questionCount = document.querySelector("#question-count");
+        const scoreCount = document.querySelector("#score-count");
+        const progressTrack = document.querySelector("#progress-track");
+        const progressBar = document.querySelector("#progress-bar");
+        const questionText = document.querySelector("#question-text");
+        const choicesContainer = document.querySelector("#choices");
+        const feedback = document.querySelector("#feedback");
+        const nextButton = document.querySelector("#next-button");
+        const restartButton = document.querySelector("#restart-button");
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function renderQuestion() {
+            const item = questions[currentQuestion];
+            questionCount.textContent = `第 ${currentQuestion + 1} 題，共 ${questions.length} 題`;
+            scoreCount.textContent = `目前答對 ${score} 題`;
+            progressTrack.setAttribute("aria-valuemax", questions.length);
+            progressTrack.setAttribute("aria-valuenow", currentQuestion);
+            progressBar.style.width = `${(currentQuestion / questions.length) * 100}%`;
+            questionText.textContent = item.question;
+            feedback.className = "feedback";
+            feedback.replaceChildren();
+            nextButton.disabled = true;
+            nextButton.textContent = "查看解析";
+            answered = false;
+
+            choicesContainer.replaceChildren();
+            item.choices.forEach((choice, index) => {
+                const button = document.createElement("button");
+                button.className = "choice";
+                button.type = "button";
+                button.textContent = choice;
+                button.addEventListener("click", () => selectAnswer(index));
+                choicesContainer.append(button);
+            });
+        }
+
+        function selectAnswer(selectedIndex) {
+            if (answered) return;
+            answered = true;
+
+            const item = questions[currentQuestion];
+            const isCorrect = selectedIndex === item.answer;
+            if (isCorrect) score += 1;
+            scoreCount.textContent = `目前答對 ${score} 題`;
+
+            [...choicesContainer.children].forEach((button, index) => {
+                button.disabled = true;
+                if (index === item.answer) button.classList.add("is-correct");
+                if (index === selectedIndex && !isCorrect) button.classList.add("is-wrong");
+            });
+
+            const heading = document.createElement("strong");
+            heading.textContent = isCorrect ? "答對了！" : "再記一下正確答案";
+            feedback.classList.toggle("is-wrong", !isCorrect);
+            feedback.append(heading, document.createTextNode(item.explanation));
+            nextButton.disabled = false;
+            nextButton.textContent = currentQuestion === questions.length - 1 ? "看測驗結果" : "下一題";
+        }
+
+        function showResult() {
+            quizPanel.hidden = true;
+            resultPanel.hidden = false;
+            progressBar.style.width = "100%";
+            document.querySelector("#final-score").textContent = `${score} / ${questions.length} 題`;
+
+            const percentage = score / questions.length;
+            const title = document.querySelector("#result-title");
+            const message = document.querySelector("#result-message");
+            if (percentage === 1) {
+                title.textContent = "全部答對，太厲害了！";
+                message.textContent = "你已經掌握這些網頁基礎概念。";
+            } else if (percentage >= 0.6) {
+                title.textContent = "做得不錯！";
+                message.textContent = "再複習一下解析，就會更熟悉囉。";
+            } else {
+                title.textContent = "完成挑戰！";
+                message.textContent = "別擔心，重新玩一次就能記得更多。";
+            }
+            restartButton.focus();
+        }
+
+        nextButton.addEventListener("click", () => {
+            if (!answered) return;
+            if (currentQuestion === questions.length - 1) {
+                showResult();
+                return;
+            }
+            currentQuestion += 1;
+            renderQuestion();
+            questionText.focus();
+        });
+
+        restartButton.addEventListener("click", () => {
+            currentQuestion = 0;
+            score = 0;
+            resultPanel.hidden = true;
+            quizPanel.hidden = false;
+            renderQuestion();
+            choicesContainer.querySelector("button").focus();
+        });
+
+        renderQuestion();
+    </script>
 </body>
 </html>
