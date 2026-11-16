@@ -3,17 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的網頁作品</title>
+    <meta name="theme-color" content="#f3fbf7">
+    <meta name="description" content="歡迎來到羅志玲的網頁小基地，看看每週製作的網頁作品。">
+    <link rel="stylesheet" href="theme.css">
+    <title>我的網頁小基地</title>
 </head>
 <body>
-    <main>
-        <h1>我的網頁作品</h1>
-        <nav aria-label="每週作品">
-            <ul>
-                <li><a href="week%201/">Week 1｜我的個人名片</a></li>
-                <li><a href="Week%202/">Week 2｜網頁小測驗</a></li>
-            </ul>
-        </nav>
+    <main class="site-shell">
+        <header class="site-header">
+            <a class="site-logo" href="./" aria-label="回到首頁">
+                <span class="logo-mark" aria-hidden="true">✦</span>
+                <span>羅志玲的網頁小基地</span>
+            </a>
+            <span class="header-note">持續更新中 <span aria-hidden="true">↗</span></span>
+        </header>
+
+        <section class="hero" aria-labelledby="welcome-title">
+            <span class="hero-sparkle sparkle-one" aria-hidden="true">✳</span>
+            <span class="hero-sparkle sparkle-two" aria-hidden="true">✦</span>
+            <p class="eyebrow">MY LITTLE WEB CORNER</p>
+            <h1 id="welcome-title">嗨，歡迎來到<br>我的網頁小基地！</h1>
+            <p class="hero-copy">這裡收藏了我每週學習做出來的小作品，<br class="desktop-break">一起來逛逛吧。</p>
+            <a class="hero-link" href="#作品">看看我的作品 <span aria-hidden="true">↓</span></a>
+        </section>
+
+        <section class="work-section" id="作品" aria-labelledby="work-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">A FEW THINGS I MADE</p>
+                    <h2 id="work-title">每週作品</h2>
+                </div>
+                <span class="work-count">01 — 02</span>
+            </div>
+
+            <nav class="project-grid" aria-label="每週作品">
+                <a class="project-card card-profile" href="week%201/">
+                    <span class="card-topline"><span>WEEK 01</span><span aria-hidden="true">↗</span></span>
+                    <span class="card-icon" aria-hidden="true">☀</span>
+                    <span class="card-title">我的個人名片</span>
+                    <span class="card-description">認識一下我，還有我喜歡的日常。</span>
+                </a>
+                <a class="project-card card-quiz" href="Week%202/">
+                    <span class="card-topline"><span>WEEK 02</span><span aria-hidden="true">↗</span></span>
+                    <span class="card-icon" aria-hidden="true">✎</span>
+                    <span class="card-title">網頁小測驗</span>
+                    <span class="card-description">來挑戰幾題，看看你能答對幾題！</span>
+                </a>
+            </nav>
+        </section>
+
+        <footer class="site-footer">
+            <span>用好奇心和一點點程式碼製作</span>
+            <span>© 2026 羅志玲</span>
+        </footer>
     </main>
 </body>
 </html>
