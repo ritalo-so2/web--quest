@@ -1,11 +1,169 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<html lang="zh-Hant"><!-- ===== head：瀏覽器的設定區，不會顯示在畫面上 ===== --><head>
+  <!-- 文字編碼：中文不變亂碼 -->
+  <meta charset="UTF-8">
+  <!-- 手機用正常大小顯示 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ✏️ 改這裡：你的推坑主題 -->
+  <title>入坑吧！ハイキュー!!</title>
+  <!-- 借穿的衣服，這行先不要動 -->
+  <link rel="stylesheet" href="theme.css">
 </head>
-<body>
-    
-</body>
-</html>
+
+<!-- ✏️ 改這裡：換配色 theme-milktea / theme-matcha / theme-taro -->
+<body class="theme-milktea">
+
+  <!-- ===== header：網站的招牌 ===== -->
+  <header>
+    <!-- ✏️ 改這裡：換成你的主題圖片，記得改 alt -->
+    <img src="photo/排球少年.jpg" alt="排球少年">
+    <div>
+      <h1>入坑吧！<br>ハイキュー!!</h1>
+      <p>一位看了十年排球的大學生，用<strong>一個網頁</strong>告訴你：這個坑，看了就回不來了。</p>
+    </div>
+  </header>
+
+  <!-- ===== nav：頁內導覽，href="#id" 會跳到對應的區塊 ===== -->
+  <nav>
+    <ul>
+      <li><a href="#why">為什麼要入坑</a></li>
+      <li><a href="#rank">私房角色排行榜</a></li>
+      <li><a href="#route">新手路線</a></li>
+      <li><a href="#guestbook">留言板</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ===== 區塊 1：推坑理由（有順序 → 用 ol） ===== -->
+    <section id="why">
+      <h2>🧋 為什麼要入坑？</h2>
+      <p>如果你看排球少年，一定是還沒聽過這五個理由：</p>
+      <!-- ✏️ 改這裡：寫下你的推坑理由 -->
+      <ol>
+        <li><strong>超級熱血</strong>：每一場比賽都熱血到爆炸</li>
+        <li><strong>幻覺自己很會打排球</strong>：看他們在其中認真的打球，會有一種自己也超強的幻覺</li>
+        <li><strong>愛上排球</strong>：看了之後，就算是一個排球小白也會完全愛上。</li>
+        <li><strong>角色都超帥</strong>：超級多不同的學校，保證找到你最愛的本命。</li>
+        <li><strong>無聊救星</strong>：無聊的時候看一集，就精神百倍。</li>
+      </ol>
+
+      <!-- article：一篇可以獨立存在的小文章 -->
+      <article>
+        <h3>📖 我的入坑故事</h3>
+        <p>其實大家都說打排球的人都會看排球少年，不過我並沒有看過，所以是到大學才開始看。結果一看完全不得了，直接看到停不下來。</p>
+      </article>
+    </section>
+
+    <!-- ===== 區塊 2：排行榜（表格） ===== -->
+    <section id="rank">
+      <h2>🏆 私房角色排行榜</h2>
+      <!-- ✏️ 改這裡：換成你的排行，一列 <tr> 就是一筆資料 -->
+      <!-- table 表格：tr = 一列，th = 標題格，td = 資料格；每列格數要一樣 -->
+      <table>
+        <caption>個人主觀評分，滿分 5 顆星</caption>
+        <tbody><tr>
+          <th>名次</th>
+          <th>飲料</th>
+          <th>推薦甜度</th>
+          <th>評分</th>
+        </tr>
+        <tr>
+          <td>🥇</td>
+          <td>黑尾鐵朗</td>
+          <td>超帥的音駒隊長</td>
+          <td>★★★★★</td>
+        </tr>
+        <tr>
+          <td>🥈</td>
+          <td>月島螢</td>
+          <td>188.3cm的冰山美男</td>
+          <td>★★★★★</td>
+        </tr>
+        <tr>
+          <td>🥉</td>
+          <td>及川徹</td>
+          <td>迷倒萬千少女的大帥哥</td>
+          <td>★★★★☆</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>日向翔陽</td>
+          <td>烏野的小太陽</td>
+          <td>★★★☆☆</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>影山飛雄</td>
+            <td>烏野的天才二傳</td>
+            <td>★★★☆☆</td>
+        </tr>
+      </tbody></table>
+    </section>
+
+    <!-- ===== 區塊 3：新手路線（沒順序 → 用 ul） ===== -->
+    <section id="route">
+      <h2>🗺️ 新手入坑路線</h2>
+      <p>第一次看不知道怎麼辦？照這張清單走就對了：</p>
+      <ul>
+        <li>先從<strong>第一季</strong>開始，先瞭解基本角色和排球規則</li>
+        <li>再來第二季後就可以盡情欣賞各種訓練和比賽</li>
+        <li>想看更多不同學校<strong>第三、四季</strong>可以再去看</li>
+        <li>進階玩家：<strong>劇場版</strong> 更是精彩</li>
+      </ul>
+    </section>
+
+    <!-- ===== 區塊 4：留言表單 ===== -->
+    <section id="guestbook">
+      <h2>✍️ 留言板</h2>
+      <p>你被推坑成功了嗎？留下你的心得吧！（W7 學會 JavaScript 後，這個表單就能真的運作）</p>
+      <!-- form：表單外框。label 的 for 要對上 input 的 id；radio 同一組要用同一個 name -->
+      <form action="#">
+        <div>
+          <label for="nickname">暱稱</label>
+          <input type="text" id="nickname" placeholder="例如：珍珠狂粉">
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com">
+        </div>
+        <fieldset>
+          <legend>你的入坑程度</legend>
+          <label><input type="radio" name="level" checked=""> 觀望中 👀</label>
+          <label><input type="radio" name="level"> 已入坑 🧋</label>
+          <label><input type="radio" name="level"> 坑底住民 🕳️</label>
+        </fieldset>
+        <div>
+          <label for="nick">最愛的角色</label>
+          <input type="text" id="nick" placeholder="例如：月島螢">
+        </div>
+        <div>
+          <label for="message">想說的話</label>
+          <textarea id="message" rows="4" placeholder="寫下你的入坑心得…"></textarea>
+        </div>
+        <label><input type="checkbox"> 我願意收到下一次的推坑通知</label>
+        <button type="submit">送出留言 🚀</button>
+      </form>
+    </section>
+
+    <!-- ===== aside：側欄，跟主內容有關但不是主角 ===== -->
+    <aside>
+      <h2>📌 排球少年金句</h2>
+      <ul>
+        <li>🏐 排球是<strong>向上看</strong>的運動!!!</li>
+        <li>雖然跳起來時你是一個人，但是別忘了<strong>背後還有我們在</strong>。</li>
+        <li>排球這種東西呢，就是在網子這邊，全員都是你的夥伴。</li>
+      </ul>
+    </aside>
+
+  </main>
+
+  <!-- ===== footer：頁尾 ===== -->
+  <footer>
+    <p>© 2026 排球少年推坑委員會 ・ 用 HTML 語意標籤親手打造</p>
+    <p><a href="#">↑ 回到最上面</a></p>
+  </footer>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;7e37587e062341558700a38a24e1dc18&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+
+
+<span id="PING_CONTENT_PUSH_NOTIFICATION" style="display: none;"></span></body></html>
